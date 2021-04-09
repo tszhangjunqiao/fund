@@ -1,0 +1,32 @@
+name: Go
+
+on:
+#  push:
+#    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
+  schedule:
+    - cron: '0 2 * * *'
+    - cron: '50 6 * * *'
+    - cron: '10 7 * * *'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.15
+
+      - name: Config
+        env:
+          CONFIG: ${{ secrets.CONFIG }}
+        run: |
+          echo "$CONFIG" > ./main/config.json
+
+      - name: Run
+        run: go run -v ./main/fund.go
