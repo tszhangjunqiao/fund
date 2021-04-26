@@ -1,14 +1,15 @@
 name: Go
 
 on:
+  workflow_dispatch:
 #  push:
 #    branches: [ main ]
 #  pull_request:
 #    branches: [ main ]
-  schedule:
-    - cron: '0 2 * * *'
-    - cron: '20 6 * * *'
-    - cron: '0 7 * * *'
+#  schedule:
+#    - cron: '0 2 * * *'
+#    - cron: '20 6 * * *'
+#    - cron: '0 7 * * *'
 
 jobs:
 
